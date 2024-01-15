@@ -1,2 +1,2 @@
-app/node_modules/
-redisinsight/
+redis/node_modules
+redis/redisinsight
