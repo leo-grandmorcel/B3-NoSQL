@@ -12,6 +12,8 @@ from air_spe import air_spe
 from gps import gps
 from altimeter import altimeter
 from magnetic_compass import magnetic_compass
+from oil_pressure import oil_pressure
+from fuel import fuel
 
 cluster = None
 session = None
@@ -182,7 +184,39 @@ try:
         );
         """
     )
-
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS oil_pressure_sensor_1 (
+            sensor_oil_pressure_id UUID PRIMARY KEY,
+            oil_pressure double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS oil_pressure_sensor_2 (
+            sensor_oil_pressure_id UUID PRIMARY KEY,
+            oil_pressure double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS fuel_sensor_1 (
+            sensor_fuel_id UUID PRIMARY KEY,
+            fuel double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS fuel_sensor_2 (
+            sensor_fuel_id UUID PRIMARY KEY,
+            fuel double
+        );
+        """
+    )
+    
     print("Keyspace and tables exist. Connection is working!")
     cpt = 150
     while cpt != 0:
@@ -195,6 +229,8 @@ try:
         gps(session, uuid4(), uuid4())
         altimeter(session, uuid4(), uuid4())
         magnetic_compass(session, uuid4(), uuid4())
+        oil_pressure(session, uuid4(), uuid4())
+        fuel(session, uuid4(), uuid4())
         cpt -= 1
         time.sleep(1)
 
