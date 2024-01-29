@@ -1,7 +1,6 @@
 from cassandra.cluster import Cluster
 import time
 from datetime import datetime
-import random
 from uuid import uuid4
 
 from temperature import temperature
@@ -12,6 +11,7 @@ from air_qual import air_qual
 from air_spe import air_spe
 from gps import gps
 from altimeter import altimeter
+from magnetic_compass import magnetic_compass
 
 cluster = None
 session = None
@@ -116,6 +116,72 @@ try:
         );
         """
     )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS air_spe_sensor_1 (
+            sensor_air_spe_id UUID PRIMARY KEY,
+            air_spe double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS air_spe_sensor_2 (
+            sensor_air_spe_id UUID PRIMARY KEY,
+            air_spe double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS gps_sensor_1 (
+            sensor_gps_id UUID PRIMARY KEY,
+            latitude double,
+            longitude double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS gps_sensor_2 (
+            sensor_gps_id UUID PRIMARY KEY,
+            latitude double,
+            longitude double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS altimeter_sensor_1 (
+            sensor_altimeter_id UUID PRIMARY KEY,
+            altitude double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS altimeter_sensor_2 (
+            sensor_altimeter_id UUID PRIMARY KEY,
+            altitude double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS magnetic_compass_sensor_1 (
+            sensor_magnetic_compass_id UUID PRIMARY KEY,
+            magnetic_compass double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS magnetic_compass_sensor_2 (
+            sensor_magnetic_compass_id UUID PRIMARY KEY,
+            magnetic_compass double
+        );
+        """
+    )
 
     print("Keyspace and tables exist. Connection is working!")
     cpt = 150
@@ -128,6 +194,7 @@ try:
         air_spe(session, uuid4(), uuid4())
         gps(session, uuid4(), uuid4())
         altimeter(session, uuid4(), uuid4())
+        magnetic_compass(session, uuid4(), uuid4())
         cpt -= 1
         time.sleep(1)
 
