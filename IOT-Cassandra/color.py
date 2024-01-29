@@ -13,14 +13,14 @@ def color(session):
     try:
         session.execute(
             """
-            INSERT INTO color_data (sensor_color_id, red, green, blue)
+            INSERT INTO color_sensor_1 (sensor_color_id, red, green, blue)
             VALUES (%s, %s, %s, %s)
             """,
             (sensor_color_id_1, red_1, green_1, blue_1)
         )
         session.execute(
             """
-            INSERT INTO color_data (sensor_color_id, red, green, blue)
+            INSERT INTO color_sensor_2 (sensor_color_id, red, green, blue)
             VALUES (%s, %s, %s, %s)
             """,
             (sensor_color_id_2, red_2, green_2, blue_2)

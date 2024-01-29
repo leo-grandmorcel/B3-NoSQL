@@ -9,14 +9,14 @@ def altimeter(session):
     try:
         session.execute(
             """
-            INSERT INTO altimeter_data (sensor_alt_id, altitude)
+            INSERT INTO altimeter_sensor_1 (sensor_altimeter_id, altitude)
             VALUES (%s, %s)
             """,
             (sensor_alt_id_1, altitude_1)
         )
         session.execute(
             """
-            INSERT INTO altimeter_data (sensor_alt_id, altitude)
+            INSERT INTO altimeter_sensor_2 (sensor_altimeter_id, altitude)
             VALUES (%s, %s)
             """,
             (sensor_alt_id_2, altitude_2)

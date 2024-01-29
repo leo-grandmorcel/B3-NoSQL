@@ -9,14 +9,14 @@ def oil_pressure(session):
     try:
         session.execute(
             """
-            INSERT INTO oil_pressure_data (oil_pressure_id, oil_pressure)
+            INSERT INTO oil_pressure_sensor_1 (sensor_oil_pressure_id, oil_pressure)
             VALUES (%s, %s)
             """,
             (oil_pressure_id_1, oil_pressure_1)
         )
         session.execute(
             """
-            INSERT INTO oil_pressure_data (oil_pressure_id, oil_pressure)
+            INSERT INTO oil_pressure_sensor_2 (sensor_oil_pressure_id, oil_pressure)
             VALUES (%s, %s)
             """,
             (oil_pressure_id_2, oil_pressure_2)

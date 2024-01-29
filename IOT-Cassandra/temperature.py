@@ -9,14 +9,14 @@ def temperature(session):
     try:
         session.execute(
             """
-            INSERT INTO temperature_data (sensor_temp_id, temperature)
+            INSERT INTO temperature_sensor_1 (sensor_temp_id, temperature)
             VALUES (%s, %s)
             """,
             (sensor_temp_id_1, temperature_1)
         )
         session.execute(
             """
-            INSERT INTO temperature_data (sensor_temp_id, temperature)
+            INSERT INTO temperature_sensor_2 (sensor_temp_id, temperature)
             VALUES (%s, %s)
             """,
             (sensor_temp_id_2, temperature_2)

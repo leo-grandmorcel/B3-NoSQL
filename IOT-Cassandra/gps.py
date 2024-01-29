@@ -11,14 +11,14 @@ def gps(session):
     try:
         session.execute(
             """
-            INSERT INTO gps_data (sensor_gps_id, latitude, longitude)
+            INSERT INTO gps_sensor_1 (sensor_gps_id, latitude, longitude)
             VALUES (%s, %s, %s)
             """,
             (sensor_gps_id_1, latitude_1, longitude_1)
         )
         session.execute(
             """
-            INSERT INTO gps_data (sensor_gps_id, latitude, longitude)
+            INSERT INTO gps_sensor_2 (sensor_gps_id, latitude, longitude)
             VALUES (%s, %s, %s)
             """,
             (sensor_gps_id_2, latitude_2, longitude_2)

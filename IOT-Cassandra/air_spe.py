@@ -9,14 +9,14 @@ def air_spe(session):
     try:
         session.execute(
             """
-            INSERT INTO air_spe_data (air_spe_id, air_spe)
+            INSERT INTO air_spe_sensor_1 (sensor_air_spe_id, air_spe)
             VALUES (%s, %s)
             """,
             (air_spe_id_1, air_spe_1)
         )
         session.execute(
             """
-            INSERT INTO air_spe_data (air_spe_id, air_spe)
+            INSERT INTO air_spe_sensor_2 (sensor_air_spe_id, air_spe)
             VALUES (%s, %s)
             """,
             (air_spe_id_2, air_spe_2)

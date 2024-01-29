@@ -9,14 +9,14 @@ def motion(session):
     try:
         session.execute(
             """
-            INSERT INTO motion_data (sensor_motion_id, motion)
+            INSERT INTO motion_sensor_1 (sensor_motion_id, motion)
             VALUES (%s, %s)
             """,
             (sensor_motion_id_1, motion_1)
         )
         session.execute(
             """
-            INSERT INTO motion_data (sensor_motion_id, motion)
+            INSERT INTO motion_sensor_2 (sensor_motion_id, motion)
             VALUES (%s, %s)
             """,
             (sensor_motion_id_2, motion_2)

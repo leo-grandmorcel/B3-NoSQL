@@ -9,14 +9,14 @@ def distance(session):
     try:
         session.execute(
             """
-            INSERT INTO distance_data (sensor_dist_id, distance)
+            INSERT INTO distance_sensor_1 (sensor_dist_id, distance)
             VALUES (%s, %s)
             """,
             (sensor_dist_id_1, distance_1)
         )
         session.execute(
             """
-            INSERT INTO distance_data (sensor_dist_id, distance)
+            INSERT INTO distance_sensor_2 (sensor_dist_id, distance)
             VALUES (%s, %s)
             """,
             (sensor_dist_id_2, distance_2)

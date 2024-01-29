@@ -9,14 +9,14 @@ def magnetic_compass(session):
     try:
         session.execute(
             """
-            INSERT INTO magnetic_compass_data (magnetic_compass_id, magnetic_compass)
+            INSERT INTO magnetic_compass_sensor_1 (sensor_magnetic_compass_id, magnetic_compass)
             VALUES (%s, %s)
             """,
             (magnetic_compass_id_1, magnetic_compass_1)
         )
         session.execute(
             """
-            INSERT INTO magnetic_compass_data (magnetic_compass_id, magnetic_compass)
+            INSERT INTO magnetic_compass_sensor_2 (sensor_magnetic_compass_id, magnetic_compass)
             VALUES (%s, %s)
             """,
             (magnetic_compass_id_2, magnetic_compass_2)

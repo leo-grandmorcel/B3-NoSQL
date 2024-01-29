@@ -9,14 +9,14 @@ def fuel(session):
     try:
         session.execute(
             """
-            INSERT INTO fuel_data (fuel_id, fuel)
+            INSERT INTO fuel_sensor_1 (sensor_fuel_id, fuel)
             VALUES (%s, %s)
             """,
             (fuel_id_1, fuel_1)
         )
         session.execute(
             """
-            INSERT INTO fuel_data (fuel_id, fuel)
+            INSERT INTO fuel_sensor_2 (sensor_fuel_id, fuel)
             VALUES (%s, %s)
             """,
             (fuel_id_2, fuel_2)
