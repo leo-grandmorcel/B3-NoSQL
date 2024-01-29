@@ -14,6 +14,8 @@ from altimeter import altimeter
 from magnetic_compass import magnetic_compass
 from oil_pressure import oil_pressure
 from fuel import fuel
+from tire import tire
+from accelerometer import accelerometer
 
 cluster = None
 session = None
@@ -216,7 +218,44 @@ try:
         );
         """
     )
-    
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tire_sensor_1 (
+            sensor_tire_id UUID PRIMARY KEY,
+            tire double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS tire_sensor_2 (
+            sensor_tire_id UUID PRIMARY KEY,
+            tire double
+        );
+        """
+    )
+
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS accelerometer_sensor_1 (
+            sensor_accelerometer_id UUID PRIMARY KEY,
+            x double,
+            y double,
+            z double
+        );
+        """
+    )
+    session.execute(
+        """
+        CREATE TABLE IF NOT EXISTS accelerometer_sensor_2 (
+            sensor_accelerometer_id UUID PRIMARY KEY,
+            x double,
+            y double,
+            z double
+        );
+        """
+    )
+
     print("Keyspace and tables exist. Connection is working!")
     cpt = 150
     while cpt != 0:
@@ -231,6 +270,8 @@ try:
         magnetic_compass(session, uuid4(), uuid4())
         oil_pressure(session, uuid4(), uuid4())
         fuel(session, uuid4(), uuid4())
+        tire(session, uuid4(), uuid4())
+        accelerometer(session, uuid4(), uuid4())
         cpt -= 1
         time.sleep(1)
 
@@ -238,8 +279,6 @@ try:
 
     rows = session.execute("SELECT * FROM temperature_data")
     print(rows)
-    # for row in rows:
-    #     print(row)
 
 except Exception as e:
     print(f"Error: {e}")
