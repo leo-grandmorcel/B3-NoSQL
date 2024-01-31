@@ -1,0 +1,96 @@
+les capteurs
+
+CREATE (Air_quality:Sensor {id:1, name:"Air quality", datatype:"double", price:928290, installation_date:"10/10/2023"});
+CREATE (Air_quality:Sensor {id:2, name:"Air quality", datatype:"double", price:9290, installation_date:"10/10/2023"});
+CREATE (Air_speed:Sensor {id:3, name:"Air speed", datatype:"double", price:990, installation_date:"10/10/2023"});
+CREATE (Air_speed:Sensor {id:4, name:"Air speed", datatype:"double", price:928280, installation_date:"10/10/2023"});
+CREATE (Altimeter:Sensor {id:5, name:"Altimeter", datatype:"double", price:9282903, installation_date:"10/10/2023"});
+CREATE (Altimeter:Sensor {id:6, name:"Altimeter", datatype:"double", price:3, installation_date:"10/10/2023"});
+CREATE (RGB:Sensor {id:7, name:"RGB", datatype:"int", price:39873, installation_date:"10/10/2023"});
+CREATE (RGB:Sensor {id:8, name:"RGB", datatype:"int", price:399, installation_date:"10/10/2023"});
+CREATE (Distance:Sensor {id:9, name:"Distance", datatype:"double", price:39873, installation_date:"10/10/2023"});
+CREATE (Distance:Sensor {id:10, name:"Distance", datatype:"double", price:3987, installation_date:"10/10/2023"});
+CREATE (GPS:Sensor {id:11, name:"GPS", datatype:"double", price:3029, installation_date:"10/10/2023"});
+CREATE (GPS:Sensor {id:12, name:"GPS", datatype:"double", price:1039, installation_date:"10/10/2023"});
+CREATE (Magnetic_compass:Sensor {id:13, name:"Magnetic compass", datatype:"double", price:90, installation_date:"10/10/2023"});
+CREATE (Magnetic_compass:Sensor {id:14, name:"Magnetic compass", datatype:"double", price:9333, installation_date:"10/10/2023"});
+CREATE (Motion:Sensor {id:15, name:"Motion", datatype:"bool", price:928493, installation_date:"10/10/2023"});
+CREATE (Motion:Sensor {id:16, name:"Motion", datatype:"bool", price:87690, installation_date:"10/10/2023"});
+CREATE (Temperature:Sensor {id:17, name:"Temperature", datatype:"double", price:109, installation_date:"10/10/2023"});
+CREATE (Temperature:Sensor {id:18, name:"Temperature", datatype:"double", price:3432, installation_date:"10/10/2023"});
+CREATE (Oil_pressure:Sensor {id:19, name:"Oil pressure", datatype:"double", price:342, installation_date:"10/10/2023"});
+CREATE (Oil_pressure:Sensor {id:20, name:"Oil pressure", datatype:"double", price:343, installation_date:"10/10/2023"});
+CREATE (Fuel:Sensor {id:21, name:"Fuel", datatype:"double", price:432, installation_date:"10/10/2023"});
+CREATE (Fuel:Sensor {id:22, name:"Fuel", datatype:"double", price:32, installation_date:"10/10/2023"});
+CREATE (Fuel:Sensor {id:22, name:"Accelerometer", datatype:"double", price:32, installation_date:"10/10/2023"})
+
+
+les familles
+
+CREATE (Air:Family {id:1, name:"Air"});
+CREATE (Position:Family {id:2, name:"Position"})
+
+
+les emplacements
+
+CREATE (Front:Location {id:1, name:"Front"});
+CREATE (Back:Location {id:2, name:"Back"});
+CREATE (Wings:Location {id:3, name:"Wings"})
+
+
+les relations vers les familles
+
+MATCH (a:Sensor {name: "Air quality"}), (b:Family {name: "Air"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+MATCH (a:Sensor {name: "Air speed"}), (b:Family {name: "Air"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+MATCH (a:Sensor {name: "Altimeter"}), (b:Family {name: "Position"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+
+MATCH (a:Sensor {name: "GPS"}), (b:Family {name: "Position"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+MATCH (a:Sensor {name: "Distance"}), (b:Family {name: "Position"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+
+les relations vers les emplacements
+
+MATCH (a:Sensor {name: "Air quality"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Air speed"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Altimeter"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "RGB"}), (b:Location {name: "Wings"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+MATCH (a:Sensor {name: "Distance"}), (b:Location {name: "Back"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "GPS"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Magnetic compass"}), (b:Location {name: "Front"})
+CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
+
+MATCH (a:Sensor {name: "Motion"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Temperature"}), (b:Location {name: "Front"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Oil pressure"}), (b:Location {name: "Wings"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Fuel"}), (b:Location {name: "Wings"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
+
+MATCH (a:Sensor {name: "Accelerometer"}), (b:Location {name: "Wings"})
+CREATE (a)-[:SE_SITUE_DANS]->(b);
