@@ -1,4 +1,4 @@
-les capteurs
+// les capteurs
 
 CREATE (Air_quality:Sensor {id:1, name:"Air quality", datatype:"double", price:928290, installation_date:"10/10/2023"});
 CREATE (Air_quality:Sensor {id:2, name:"Air quality", datatype:"double", price:9290, installation_date:"10/10/2023"});
@@ -25,20 +25,20 @@ CREATE (Fuel:Sensor {id:22, name:"Fuel", datatype:"double", price:32, installati
 CREATE (Fuel:Sensor {id:22, name:"Accelerometer", datatype:"double", price:32, installation_date:"10/10/2023"})
 
 
-les familles
+// les familles
 
 CREATE (Air:Family {id:1, name:"Air"});
 CREATE (Position:Family {id:2, name:"Position"})
 
 
-les emplacements
+// les emplacements
 
 CREATE (Front:Location {id:1, name:"Front"});
 CREATE (Back:Location {id:2, name:"Back"});
 CREATE (Wings:Location {id:3, name:"Wings"})
 
 
-les relations vers les familles
+// les relations vers les familles
 
 MATCH (a:Sensor {name: "Air quality"}), (b:Family {name: "Air"})
 CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
@@ -57,7 +57,7 @@ MATCH (a:Sensor {name: "Distance"}), (b:Family {name: "Position"})
 CREATE (a)-[:EST_DANS_LA_FAMILLE]->(b);
 
 
-les relations vers les emplacements
+// les relations vers les emplacements
 
 MATCH (a:Sensor {name: "Air quality"}), (b:Location {name: "Front"})
 CREATE (a)-[:SE_SITUE_DANS]->(b);
