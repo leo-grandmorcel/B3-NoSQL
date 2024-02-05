@@ -1,2 +1,3 @@
 redis/redisinsight/
 redis/node_modules/
+__pycache__/
