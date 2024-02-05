@@ -4,12 +4,12 @@ from uuid import uuid4
 def color(session):
     sensor_color_id_1 = uuid4()
     sensor_color_id_2 = uuid4()
-    red_1 = random.uniform(0, 255)
-    green_1 = random.uniform(0, 255)
-    blue_1 = random.uniform(0, 255)
-    red_2 = random.uniform(0, 255)
-    green_2 = random.uniform(0, 255)
-    blue_2 = random.uniform(0, 255)
+    red_1 = int(random.uniform(0, 255)//1)
+    green_1 = int(random.uniform(0, 255)//1)
+    blue_1 = int(random.uniform(0, 255)//1)
+    red_2 = int(random.uniform(0, 255)//1)
+    green_2 = int(random.uniform(0, 255)//1)
+    blue_2 = int(random.uniform(0, 255)//1)
     try:
         session.execute(
             """

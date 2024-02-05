@@ -13,14 +13,14 @@ def accelerometer(session):
     try:
         session.execute(
             """
-            INSERT INTO accelerometer_sensor_1 (sensor_acc_id, x, y, z)
+            INSERT INTO accelerometer_sensor_1 (sensor_accelerometer_id, x, y, z)
             VALUES (%s, %s, %s, %s)
             """,
             (sensor_acc_id_1, x_1, y_1, z_1)
         )
         session.execute(
             """
-            INSERT INTO accelerometer_sensor_2 (sensor_acc_id, x, y, z)
+            INSERT INTO accelerometer_sensor_2 (sensor_accelerometer_id, x, y, z)
             VALUES (%s, %s, %s, %s)
             """,
             (sensor_acc_id_2, x_2, y_2, z_2)
